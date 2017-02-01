@@ -9,5 +9,10 @@
 import Foundation
 import Alamofire
 
+func MovieRequest(url: String)->Void{
+    
+    
+}
+
 
 
