@@ -12,12 +12,12 @@ import Foundation
 class Movie: MediaInfo{
     var id:Int?
     var title:String?
-    var releaseDate: NSDate?
+    var releaseDate: String?
     var description:String?
     var rating:Double?
     var picture:String?
     
-    init(id:Int, title:String, releaseDate:NSDate, description:String, rating:Double, picture:String){
+    init(id:Int, title:String, releaseDate:String, description:String, rating:Double, picture:String){
         self.description = description
         self.id = id
         self.picture = picture

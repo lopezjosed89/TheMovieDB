@@ -9,11 +9,17 @@
 import Foundation
 import Alamofire
 
-protocol MovieService {
+
+typealias MoviesHandler = (_ movieResponse : Response?, _ error: NSError?) -> Void
+
+class MovieAPI {
     
+    private let movieService = MovieService()
+
     
+    func retrieveMovieInfo(movieGroup: MovieGroup, completionHandler : @escaping MoviesHandler){
+        movieService.RetrieveInfo(movieGroup: movieGroup, completionHandler: completionHandler)
     
+        
+    }
 }
-
-
-

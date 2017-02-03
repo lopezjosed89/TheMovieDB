@@ -9,7 +9,8 @@
 import Foundation
 
 enum Response {
-    case success([String: Any])
+    
+    case success([Movie])
     case failure(String)
 
 }

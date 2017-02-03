@@ -7,7 +7,7 @@ import PlaygroundSupport
 
 
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+//PlaygroundPage.current.needsIndefiniteExecution = true
 
 
 
@@ -26,7 +26,7 @@ func jsonParser(JSON: Any) -> Void {
         if let nestedDictionary = dictionary["results"] as? [[String: Any]]{
             for result in nestedDictionary {
             
-                print(result["title"]!)
+                print(result["poster_path"]!)
             }
         }
     }
@@ -41,6 +41,7 @@ func requestMovie(upComing: String) -> Void {
         if let JSON = response.result.value {
             
             jsonParser(JSON: JSON)
+            print(JSON)
     
             
         }

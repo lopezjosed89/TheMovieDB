@@ -9,10 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var movieListed = [Movie]()
+    private let movieApi = MovieAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+   
+     movieApi.retrieveMovieInfo(movieGroup: .topRated){ movieResponse, error in
+        switch movieResponse! {
+            
+        case .success(let movie): print(movie)
+        case .failure("fallaste"): print("failed")
+        default: break
+        }
+        }
+    
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,34 +9,75 @@
 import Foundation
 import Alamofire
 
-let url = MovieGroup.NowPlaying
+class MovieService {
 
 
-func requestMovie(url: String, completion: @escaping (_ result: String) -> Void) -> Void {
     
-    Alamofire.request(url).responseJSON { (response) -> Void in
-       // check if has a value
-        if let JSON = response.result.value {
+func RetrieveInfo(movieGroup : MovieGroup, completionHandler : @escaping MoviesHandler){
+        
+        let url =  "\(movieGroup.Url)"+AppKeys.apiKey
+
+    
+        Alamofire.request(url).responseJSON{
             
-            jsonParser(JSON: JSON)
-            completion("Done")
+            response in
+            guard let json = response.result.value as? [String: AnyObject]
+                
+                else {
+                    
+                    completionHandler(nil, response.result.error as NSError?)
+                    return
+            }
             
+             let movies = self.jsonParser(JSON: json)
+            completionHandler(.success(movies), nil)
         }
         
     }
-}
-
-
-func jsonParser(JSON: Any) -> Void {
     
+    
+    
+//func retrieveMoviesBy(url: String, completion: @escaping (_ result: String) -> Void) -> Void {
+//    
+//    Alamofire.request(url).responseJSON { (response) -> Void in
+//       // check if has a value
+//        if let JSON = response.result.value {
+//            
+//            self.jsonParser(JSON: JSON)
+//            completion("Done")
+//            
+//        }
+//        
+//    }
+//}
+
+    func jsonParser(JSON: Any) -> [Movie] {
+    var movies = [Movie]()
     if let dictionary = JSON as? [String: Any]{
         
         if let nestedDictionary = dictionary["results"] as? [[String: Any]]{
             for result in nestedDictionary {
+                let id = result["id"] as! Int,
+                title = result["title"] as! String,
+                releaseDate = result["release_date"] as! String,
+                description = result["overview"] as! String,
+                rating = result["vote_average"] as! Double,
+                picture = result["poster_path"] as! String
+                let posterURL = "https://image.tmdb.org/t/p/w500/"+picture
                 
-                print(result["title"]!)
+                
+                
+                let movie = Movie.init(id: id, title: title, releaseDate: releaseDate, description: description, rating: rating, picture: posterURL)
+                
+                movies.append(movie)
+                print(movie.title)
             }
         }
     }
+        
+        return movies
+       
 }
+}
+
 
