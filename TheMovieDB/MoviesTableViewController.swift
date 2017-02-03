@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import AlamofireImage
 
-class MoviesTableViewController: UITableViewController {
+class MoviesTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    var movieListed = [Movie]()
+    private let movieApi = MovieAPI()
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
+        
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        movieApi.retrieveMovieInfo(movieGroup: .nowPlaying){ movieResponse, error in
+            switch movieResponse! {
+            case .success(let movie):
+                self.movieListed = movie
+                self.tableView.reloadData()
+            case .failure("fail"): print("failed")
+            default: break
+            }
+        }
+        super.viewWillAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,25 +42,27 @@ class MoviesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        print("\(movieListed.count) veces")
+        return movieListed.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MediaCell", for: indexPath)
+        let movie = movieListed[indexPath.row]
+    
 
         // Configure the cell...
+        cell.textLabel?.text = movie.title
+        cell.imageView?.af_setImage(withURL: URL(string: movie.picture!)!)
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

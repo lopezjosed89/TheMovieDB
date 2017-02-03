@@ -35,22 +35,6 @@ func RetrieveInfo(movieGroup : MovieGroup, completionHandler : @escaping MoviesH
         
     }
     
-    
-    
-//func retrieveMoviesBy(url: String, completion: @escaping (_ result: String) -> Void) -> Void {
-//    
-//    Alamofire.request(url).responseJSON { (response) -> Void in
-//       // check if has a value
-//        if let JSON = response.result.value {
-//            
-//            self.jsonParser(JSON: JSON)
-//            completion("Done")
-//            
-//        }
-//        
-//    }
-//}
-
     func jsonParser(JSON: Any) -> [Movie] {
     var movies = [Movie]()
     if let dictionary = JSON as? [String: Any]{
@@ -70,7 +54,7 @@ func RetrieveInfo(movieGroup : MovieGroup, completionHandler : @escaping MoviesH
                 let movie = Movie.init(id: id, title: title, releaseDate: releaseDate, description: description, rating: rating, picture: posterURL)
                 
                 movies.append(movie)
-                print(movie.title)
+                //print(movie.title!)
             }
         }
     }
