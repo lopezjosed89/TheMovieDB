@@ -15,7 +15,7 @@ class MovieService {
     
 func RetrieveInfo(movieGroup : MovieGroup, completionHandler : @escaping MoviesHandler){
         
-        let url =  "\(movieGroup.Url)"+AppKeys.apiKey
+        let url =  "\(movieGroup.Url)"+AppKeys.apiKey  //pasar la url como parametro
 
     
         Alamofire.request(url).responseJSON{
@@ -48,9 +48,6 @@ func RetrieveInfo(movieGroup : MovieGroup, completionHandler : @escaping MoviesH
                 rating = result["vote_average"] as! Double,
                 picture = result["poster_path"] as! String
                 let posterURL = "https://image.tmdb.org/t/p/w500/"+picture
-                
-                
-                
                 let movie = Movie.init(id: id, title: title, releaseDate: releaseDate, description: description, rating: rating, picture: posterURL)
                 
                 movies.append(movie)

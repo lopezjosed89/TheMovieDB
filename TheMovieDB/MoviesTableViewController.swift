@@ -11,11 +11,22 @@ import AlamofireImage
 
 class MoviesTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    @IBOutlet weak var backgroundImg: UIImageView!
+    
+    
     var movieListed = [Movie]()
     private let movieApi = MovieAPI()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+        
+       
+      
+        
+        
+        
+        
+     
         super.viewDidLoad()
     
         
@@ -23,6 +34,11 @@ class MoviesTableViewController: UIViewController,UITableViewDelegate,UITableVie
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+        tableView.backgroundView = UIImageView(image: UIImage(named: "pexels-photo-27008.jpg"))
+        
+        
+        
         movieApi.retrieveMovieInfo(movieGroup: .nowPlaying){ movieResponse, error in
             switch movieResponse! {
             case .success(let movie):
@@ -34,6 +50,7 @@ class MoviesTableViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         super.viewWillAppear(true)
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,16 +69,27 @@ class MoviesTableViewController: UIViewController,UITableViewDelegate,UITableVie
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MediaCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MediaCell", for: indexPath) as! MediaTableViewCell
         let movie = movieListed[indexPath.row]
+        cell.layer.cornerRadius = 8
+        
+ 
+        
+    
+        
+ 
     
 
         // Configure the cell...
-        cell.textLabel?.text = movie.title
-        cell.imageView?.af_setImage(withURL: URL(string: movie.picture!)!)
+        cell.titleLabel.text = movie.title
+        cell.posterImage.af_setImage(withURL: URL(string: movie.picture!)!)
+        
+        
 
         return cell
     }
+    
+ 
 
 
     /*
