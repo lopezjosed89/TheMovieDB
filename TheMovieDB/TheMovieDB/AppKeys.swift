@@ -9,9 +9,6 @@
 import Foundation
 
 class AppKeys {
-
-
-    static let apiKey = "api_key=a86dbf84324001b2221400d5f138500c"
+    static internal let parameters: [String: String] = ["api_key": "a86dbf84324001b2221400d5f138500c"]
     static let instance = AppKeys()
-    
 }

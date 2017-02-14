@@ -15,5 +15,4 @@ protocol MediaInfo {
     var description:String?{get}
     var rating:Double?{get}
     var picture:String?{get}
-    
 }

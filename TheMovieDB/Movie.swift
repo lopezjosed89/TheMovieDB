@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Movie: MediaInfo{
+struct Movie: MediaInfo{
     var id:Int?
     var title:String?
     var releaseDate: String?

@@ -9,8 +9,6 @@
 import Foundation
 
 enum Response {
-    
     case success([Movie])
     case failure(String)
-
 }
