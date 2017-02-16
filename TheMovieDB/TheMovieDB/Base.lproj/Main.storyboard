@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Cg-ki-1nO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -18,58 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="162" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="abD-AR-vJ6" customClass="MyTableView" customModule="TheMovieDB" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pexels-photo-27008" translatesAutoresizingMaskIntoConstraints="NO" id="Buj-uY-7Yd">
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="blue" indentationLevel="100" indentationWidth="100" reuseIdentifier="MediaCell" rowHeight="160" id="xkW-0Y-vBJ" customClass="MediaTableViewCell" customModule="TheMovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119" width="375" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkW-0Y-vBJ" id="020-Wz-LWo">
-                                            <frame key="frameInset" width="375" height="159"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2Y-gc-XBU">
-                                                    <frame key="frameInset" minX="130" minY="11" width="237" height="59"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="DamascusSemiBold" family="Damascus" pointSize="20"/>
-                                                    <color key="textColor" red="0.37688228629999998" green="0.37688228629999998" blue="0.37688228629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNb-9S-WtM">
-                                                    <frame key="frameInset" width="114" height="161"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.81525088028169013" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="100" bottom="1" right="1"/>
-                                        <connections>
-                                            <outlet property="posterImage" destination="DNb-9S-WtM" id="n2q-68-YLV"/>
-                                            <outlet property="titleLabel" destination="H2Y-gc-XBU" id="WGe-jL-wcx"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4es-VV-8cz"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uKi-dD-jGZ"/>
-                                </connections>
-                            </tableView>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="r7c-0Y-Sgb"/>
                     <connections>
-                        <outlet property="tableView" destination="abD-AR-vJ6" id="V3C-yn-zXn"/>
+                        <outlet property="containerView" destination="8bC-Xf-vdC" id="3cW-Ib-hpg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="-514"/>
+            <point key="canvasLocation" x="2309.5999999999999" y="-514.09295352323841"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oNS-6D-1UR">
@@ -155,4 +118,7 @@
             <point key="canvasLocation" x="1184.8" y="431.33433283358323"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pexels-photo-27008" width="1969" height="3261"/>
+    </resources>
 </document>

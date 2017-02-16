@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="blue" indentationLevel="100" indentationWidth="100" reuseIdentifier="MyTableViewCell" rowHeight="150" id="a4o-Be-22b" customClass="MyTableViewCell" customModule="TheMovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a4o-Be-22b" id="9KY-Hq-9Tj">
+                <frame key="frameInset" width="375" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bg5-PX-2cF">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="105" id="Qco-lD-TyT"/>
+                            <constraint firstAttribute="height" constant="136" id="YFU-3k-QZx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-il-crt">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="105" id="5ui-wl-972"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.81525088030000004" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="0cG-il-crt" firstAttribute="leading" secondItem="Bg5-PX-2cF" secondAttribute="trailing" constant="8" symbolic="YES" id="0AE-i3-Y18"/>
+                    <constraint firstItem="0cG-il-crt" firstAttribute="top" secondItem="9KY-Hq-9Tj" secondAttribute="topMargin" constant="52" id="HJO-5Z-Bcq"/>
+                    <constraint firstItem="Bg5-PX-2cF" firstAttribute="top" secondItem="9KY-Hq-9Tj" secondAttribute="topMargin" id="Wtm-e0-VKC"/>
+                    <constraint firstItem="0cG-il-crt" firstAttribute="centerY" secondItem="Bg5-PX-2cF" secondAttribute="centerY" id="fKf-K8-62z"/>
+                    <constraint firstItem="Bg5-PX-2cF" firstAttribute="leading" secondItem="9KY-Hq-9Tj" secondAttribute="leadingMargin" id="ggk-lD-6bd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <edgeInsets key="layoutMargins" top="0.0" left="100" bottom="1" right="1"/>
+            <connections>
+                <outlet property="labelTitle" destination="0cG-il-crt" id="NRX-aI-3oZ"/>
+                <outlet property="posterView" destination="Bg5-PX-2cF" id="O3J-C4-teo"/>
+            </connections>
+            <point key="canvasLocation" x="-209.5" y="-33.5"/>
+        </tableViewCell>
+    </objects>
+</document>

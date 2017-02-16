@@ -30,6 +30,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate {
         
         layout.itemSize = CGSize(width: 100, height: 150)
         layout.scrollDirection = .vertical
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         collectionView.backgroundView = UIImageView(image: UIImage(named: "pexels-photo-27008.jpg"))
@@ -63,7 +64,7 @@ extension CollectionViewController : UICollectionViewDataSource {
         let identifier = String(describing: MyCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! MyCollectionViewCell
         let movie = movieListed[indexPath.row]
-        //cell.myLabel.text = movie.title
+        cell.myLabel.text = movie.title
         cell.posterImage.af_setImage(withURL: URL(string: movie.picture!)!)
         cell.layer.cornerRadius = 8
         return cell

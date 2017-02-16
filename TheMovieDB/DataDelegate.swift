@@ -11,12 +11,12 @@ import UIKit
 
 protocol MyListDataSource:class {
     func getItems() ->Int
-    func configureCell(_: MyCell)
+    func configureCell(cell: MyCell, indexPath: IndexPath)
 }
 
 protocol MyCell {
-    var labelTitle: UILabel? {get set}
-    var posterView: UIImageView? {get set}
+    var labelTitle: UILabel! {get set}
+    var posterView: UIImageView! {get set}
 }
 
 protocol MyListView{
@@ -25,14 +25,32 @@ protocol MyListView{
 }
 
 
-class MyTableView: UITableView, MyListView{
+class MyTableView: UITableView, MyListView {
     internal func handleDataReload() {
        self.reloadData()
     }
+    let identifier = String(describing: MyTableViewCell.self)
 
     weak var myListDelegate: MyListDataSource?
     
-   }
+    override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
+        initRegister()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initRegister()
+    }
+    
+    func initRegister() {
+        let nib = UINib(nibName: identifier, bundle: nil)
+        self.dataSource = self
+        self.register(nib, forCellReuseIdentifier: identifier)
+        rowHeight = 150
+        backgroundColor = nil
+    }
+}
 
 extension MyTableView:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,9 +58,9 @@ extension MyTableView:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MediaCell", for: indexPath) as! MediaTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyTableViewCell
         cell.layer.cornerRadius = 8
-        myListDelegate?.configureCell(cell as! MyCell)
+        myListDelegate?.configureCell(cell: cell as MyCell, indexPath: indexPath)
         return cell
     }
 }
