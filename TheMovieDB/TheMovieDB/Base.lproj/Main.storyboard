@@ -28,11 +28,47 @@
                     <navigationItem key="navigationItem" id="r7c-0Y-Sgb"/>
                     <connections>
                         <outlet property="containerView" destination="8bC-Xf-vdC" id="3cW-Ib-hpg"/>
+                        <segue destination="9OE-1e-nES" kind="presentation" identifier="ShowDetail" id="yQJ-Ij-h8m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309.5999999999999" y="-514.09295352323841"/>
+            <point key="canvasLocation" x="2153" y="-501"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="cf2-uj-LN4">
+            <objects>
+                <viewController id="9OE-1e-nES" customClass="DetailViewController" customModule="TheMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wp0-AZ-PDS"/>
+                        <viewControllerLayoutGuide type="bottom" id="t90-qc-CCY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zEW-GI-9Up">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twm-AV-vol">
+                                <frame key="frameInset" minX="67" minY="20" width="240" height="277"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB6-qx-dzv">
+                                <frame key="frameInset" minX="16" minY="331" width="343" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailImage" destination="Twm-AV-vol" id="xXR-y9-jk9"/>
+                        <outlet property="detailTitle" destination="bB6-qx-dzv" id="MEH-nG-gcX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDd-K1-Ska" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2944.8000000000002" y="-501.49925037481262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oNS-6D-1UR">

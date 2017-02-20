@@ -12,6 +12,7 @@ import UIKit
 protocol MyListDataSource:class {
     func getItems() ->Int
     func configureCell(cell: MyCell, indexPath: IndexPath)
+    func getDetail(cell: MyCell, indexPath: IndexPath)
 }
 
 protocol MyCell {
@@ -45,6 +46,7 @@ class MyTableView: UITableView, MyListView {
     
     func initRegister() {
         let nib = UINib(nibName: identifier, bundle: nil)
+        self.delegate = self
         self.dataSource = self
         self.register(nib, forCellReuseIdentifier: identifier)
         rowHeight = 150
@@ -52,7 +54,7 @@ class MyTableView: UITableView, MyListView {
     }
 }
 
-extension MyTableView:UITableViewDataSource {
+extension MyTableView:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (myListDelegate?.getItems())!
     }
@@ -63,4 +65,45 @@ extension MyTableView:UITableViewDataSource {
         myListDelegate?.configureCell(cell: cell as MyCell, indexPath: indexPath)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myListDelegate?.getDetail(cell: tableView.cellForRow(at: indexPath) as! MyTableViewCell, indexPath: indexPath )
+    }
 }
+
+//Collection delegate
+
+protocol CollectionContentData: class {
+    func getItems() ->Int
+    func configureCell(cell: MyCell, indexPath: IndexPath)
+}
+
+protocol CollectionList{
+    weak var myListDelegate: CollectionContentData? {get set}
+    func handleDataReload()
+}
+
+class MyCollectionView: UICollectionView, CollectionList {
+    internal func handleDataReload() {
+        
+    }
+
+    weak internal var myListDelegate: CollectionContentData?
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

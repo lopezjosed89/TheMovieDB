@@ -11,6 +11,8 @@ import AlamofireImage
 
 class MoviesTableViewController: UIViewController, MyListDataSource {
     
+    var selectedIndex: Int?
+    
     internal func configureCell(cell: MyCell, indexPath: IndexPath) {
         let movie = movieListed[indexPath.row]
         cell.labelTitle?.text = movie.title
@@ -20,6 +22,18 @@ class MoviesTableViewController: UIViewController, MyListDataSource {
     internal func getItems() -> Int {
         return movieListed.count
     }
+    
+    func getDetail(cell: MyCell, indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "ShowDetail", sender: nil)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationView = segue.destination as? DetailViewController
+        destinationView?.peli = movieListed[selectedIndex!]
+    }
+
     //@IBOutlet weak var backGroundImg: UIImageView!
     @IBOutlet var containerView: UIView!
     var myListView: MyListView!
@@ -27,8 +41,8 @@ class MoviesTableViewController: UIViewController, MyListDataSource {
     private let movieApi = MovieAPI()
     
     override func viewDidLoad() {
-        let view = MyTableView()
         
+        let view = MyTableView()
         self.myListView = view
         view.myListDelegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,9 +55,6 @@ class MoviesTableViewController: UIViewController, MyListDataSource {
         
         NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        
-        
         
         super.viewDidLoad()
     }

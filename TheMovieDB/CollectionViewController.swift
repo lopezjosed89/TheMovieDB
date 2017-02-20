@@ -51,13 +51,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate {
         return movieListed.count
         
     }
-    
-
-    
 }
-
-
-
 extension CollectionViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -69,6 +63,4 @@ extension CollectionViewController : UICollectionViewDataSource {
         cell.layer.cornerRadius = 8
         return cell
     }
-    
-    
 }
