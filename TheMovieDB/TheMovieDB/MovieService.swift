@@ -31,11 +31,11 @@ class MovieService {
                     let id = result["id"] as! Int,
                     title = result["title"] as! String,
                     releaseDate = result["release_date"] as! String,
-                    description = result["overview"] as! String,
+                    overview = result["overview"] as! String,
                     rating = result["vote_average"] as! Double,
                     picture = result["poster_path"] as! String
                     let posterURL = "https://image.tmdb.org/t/p/w500/"+picture
-                    let movie = Movie.init(id: id, title: title, releaseDate: releaseDate, description: description, rating: rating, picture: posterURL)
+                    let movie = Movie.init(id: id, title: title, releaseDate: releaseDate, overview: overview, rating: rating, picture: posterURL)
                     movies.append(movie)
                 }
             }
