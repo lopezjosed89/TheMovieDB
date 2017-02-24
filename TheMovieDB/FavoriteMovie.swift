@@ -25,8 +25,17 @@ class FavoriteMovie: NSObject, FavoritesProtocol, NSCoding {
     internal func addMovieToFavorites() {
         
     }
-
     
-
+    class func archiveFilePath() -> String{
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        return documentsDirectory.appendingPathComponent("favoriteMovie.archive").path
+    }
+    class func readMoviesFromArchive() -> [Movie]? {
+        return (NSKeyedUnarchiver.unarchiveObject(withFile: archiveFilePath()) as? [Movie])
+    }
     
+    class func saveMoviesToArchive(movies: [Movie]) -> Bool {
+        return NSKeyedArchiver.archiveRootObject(movies, toFile: archiveFilePath())
+    }
 }
